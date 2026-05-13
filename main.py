@@ -21,8 +21,15 @@ def main():
         help="Количество разных криптовалют в выгрузке (по умолчанию 25)"
     )
 
+    parser.add_argument(
+        "--marketCapLine", 
+        type=int, 
+        default=1000000000, 
+        help="Пороговое значение капитализации рынка"
+    )
+
     args = parser.parse_args()
-    data = get_crypto(args.currency, args.limit)
+    data = get_crypto(args.currency, args.limit, args.marketCapLine)
     # print('data: ', data)
 
     new_data = []
