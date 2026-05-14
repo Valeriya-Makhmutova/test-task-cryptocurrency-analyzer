@@ -1,12 +1,17 @@
+'''
+Функция, которая создает Excel файл,
+записывает данные в таблицу и форматирует её.
+
+Принимает в качестве аргумента - список готовых строк.
+
+Столбцы таблицы формируются в frame_data,
+здесь можно добавить или удалить столбец
+'''
+
 import pandas as pd
 from openpyxl import load_workbook
 from openpyxl.styles import Font, PatternFill
 from config import TABLE_HEAD_COLOR_CODE
-
-'''
-
-
-'''
 
 
 def create_xlsx_file(lines_list):

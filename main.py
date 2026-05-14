@@ -1,15 +1,25 @@
+'''
+Главный модуль, который запускает приложение.
+
+Координирует работу всех остальных модулей, 
+запускается из терминала.
+
+При запуске приложения можно передать аргументы: 
+    валюту сравнения (--currency),
+    лимит валют на странице (--limit),
+    пороговое значение капитализации рынка валюты (--marketCapLine)
+
+Значения, которые применятся по умолчанию можно посмотреть -
+в файле config.py и, если нужно, то заменить их
+'''
+
 import sys
 import traceback
 from utils.get_arguments_cli import get_arguments_cli
-from app.endpoints import get_crypto
+from app.api import get_crypto
 from utils.currency_formatter import currency_formatter
 from utils.get_lines_list import get_lines_list
 from utils.export_xlsx_file import create_xlsx_file
-
-'''
-
-
-'''
 
 
 def main():

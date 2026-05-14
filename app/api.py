@@ -1,3 +1,16 @@
+'''
+Модуль для парсинга и фильтрации криптовалютных данных.
+
+Запрашивает информацию о валютах через CoinGecko API и фильтрует
+их по минимальной рыночной капитализации.
+
+Принимает аргументы, полученые с помощью командной строки
+или значения по умолчанию: 
+    валюта сравнения (vs_currency),
+    лимит валют на странице (currency_limit),
+    пороговое значение капитализации рынка валюты (market_cap_line) 
+'''
+
 import requests
 import sys
 import traceback
@@ -7,10 +20,7 @@ from config import (
     PAGE_NUMBER
 )
 from requests.exceptions import RequestException
-
-'''
-
-'''
+from utils.market_cap_filtration import market_capitalization_filter
 
 
 def get_crypto(vs_currency, currency_limit, market_cap_line):
@@ -29,14 +39,8 @@ def get_crypto(vs_currency, currency_limit, market_cap_line):
         response.raise_for_status()  # защищаем себя от сетевых ошибок
 
         parsed_data = response.json()
-
-        filtred_currencies = [
-            currency
-            for currency in parsed_data
-            if currency["market_cap"] >= market_cap_line
-        ]
-        print('length of filtred data', len(filtred_currencies))
-        return filtred_currencies
+        
+        return market_capitalization_filter(parsed_data, market_cap_line)
 
     except RequestException as req_exc:
         print(f"Request error: {req_exc}")

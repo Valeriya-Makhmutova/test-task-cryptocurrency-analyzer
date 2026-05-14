@@ -7,5 +7,5 @@ COIN_GECKO_URL = 'https://api.coingecko.com/api/v3/coins/markets'
 # Params for request
 ORDER_TYPE = "market_cap_desc"
 PAGE_NUMBER = 1
-
+# Formatting
 TABLE_HEAD_COLOR_CODE = '008080'
