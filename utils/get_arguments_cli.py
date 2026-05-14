@@ -8,7 +8,6 @@
 
 import argparse
 from config import (
-    DEFAULT_VS_CURRENCY,
     DEFAULT_CURRENCIES_PER_PAGE,
     DEFAULT_MARKET_CAP_LINE
 )
@@ -17,13 +16,6 @@ from config import (
 def get_arguments_cli():
     parser = argparse.ArgumentParser(
         description="Консольная утилита для анализа криптовалюты"
-    )
-
-    parser.add_argument(
-        "-c", "--currency",
-        type=str,
-        default=DEFAULT_VS_CURRENCY,
-        help="Валюта сравнения (usd, eur, rub)"
     )
 
     parser.add_argument(

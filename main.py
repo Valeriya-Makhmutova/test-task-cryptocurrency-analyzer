@@ -5,10 +5,11 @@
 запускается из терминала.
 
 При запуске приложения можно передать аргументы: 
-    валюту сравнения (--currency),
     лимит валют на странице (--limit),
     пороговое значение капитализации рынка валюты (--marketCapLine)
 
+Валюта сравнения - "usd"
+    
 Значения, которые применятся по умолчанию можно посмотреть -
 в файле config.py и, если нужно, то заменить их
 '''
@@ -28,7 +29,6 @@ def main():
         arguments = get_arguments_cli()
         # получение данных из GET запроса к API
         currencies_data = get_crypto(
-            arguments.currency,
             arguments.limit,
             arguments.marketCapLine
         )

@@ -6,7 +6,6 @@
 
 Принимает аргументы, полученые с помощью командной строки
 или значения по умолчанию: 
-    валюта сравнения (vs_currency),
     лимит валют на странице (currency_limit),
     пороговое значение капитализации рынка валюты (market_cap_line) 
 '''
@@ -17,18 +16,19 @@ import traceback
 from config import (
     COIN_GECKO_URL,
     ORDER_TYPE,
-    PAGE_NUMBER
+    PAGE_NUMBER,
+    VS_CURRENCY
 )
 from requests.exceptions import RequestException
 from utils.market_cap_filtration import market_capitalization_filter
 
 
-def get_crypto(vs_currency, currency_limit, market_cap_line):
+def get_crypto(currency_limit, market_cap_line):
     try:
         url = COIN_GECKO_URL
 
         params = {
-            "vs_currency": vs_currency,
+            "vs_currency": VS_CURRENCY,
             "order": ORDER_TYPE,
             "per_page": currency_limit,
             "page": PAGE_NUMBER,
